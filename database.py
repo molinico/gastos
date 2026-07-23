@@ -1,17 +1,20 @@
-import sqlite3
+import psycopg2
+import os
+
+# Acá pegás la URL que te dio Neon
+DATABASE_URL = 'postgresql://neondb_owner:npg_AUKcns57mzMQ@ep-odd-cloud-ayvfaagt.c-5.us-east-2.aws.neon.tech/neondb?sslmode=require'
 
 def conectar():
-    # Esto crea (o se conecta a) un archivo llamado finanzas.db en la misma carpeta
-    return sqlite3.connect('finanzas.db')
+    return psycopg2.connect(DATABASE_URL)
 
 def init_db():
     conexion = conectar()
     cursor = conexion.cursor()
     
-    # Tabla para el historial completo de gastos
+    # Tabla para el historial completo de gastos (Postgres usa SERIAL en lugar de AUTOINCREMENT)
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS gastos (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id SERIAL PRIMARY KEY,
             fecha TEXT,
             concepto TEXT,
             medio_pago TEXT,
@@ -23,7 +26,7 @@ def init_db():
     # Tabla para proyectar las cuotas mes a mes
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS proyeccion_cuotas (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id SERIAL PRIMARY KEY,
             gasto_id INTEGER,
             mes_anio TEXT,
             cuota_actual TEXT,
@@ -33,5 +36,6 @@ def init_db():
     ''')
     
     conexion.commit()
+    cursor.close()
     conexion.close()
-    print("Base de datos inicializada correctamente.")
+    print("Base de datos en la nube inicializada correctamente.")
