@@ -6,7 +6,7 @@ import database
 # 1. Configuración de credenciales
 TOKEN = '8828929514:AAE-I5D56CRhQ11eLHeNmjeJziHOPI27tyk'
 # Cuando subas esto a Render, cambiarás esta URL por la que ellos te den.
-URL_SERVIDOR = '[https://olotov.onrender.com](https://olotov.onrender.com)' 
+URL_SERVIDOR = 'https://olotov.onrender.com'
 
 bot = telebot.TeleBot(TOKEN)
 app = Flask(__name__)
