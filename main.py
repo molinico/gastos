@@ -4,9 +4,9 @@ from flask import Flask, request
 import database
 
 # 1. Configuración de credenciales
-TOKEN = 'ACA_PONE_EL_TOKEN_DE_TU_BOT'
+TOKEN = '8828929514:AAE-I5D56CRhQ11eLHeNmjeJziHOPI27tyk'
 # Cuando subas esto a Render, cambiarás esta URL por la que ellos te den.
-URL_SERVIDOR = '[https://tu-aplicacion.onrender.com](https://tu-aplicacion.onrender.com)' 
+URL_SERVIDOR = '[https://olotov.onrender.com](https://olotov.onrender.com)' 
 
 bot = telebot.TeleBot(TOKEN)
 app = Flask(__name__)
