@@ -8,7 +8,7 @@ import calendar
 # 1. Configuración de credenciales
 TOKEN = '8828929514:AAE-I5D56CRhQ11eLHeNmjeJziHOPI27tyk'
 URL_SERVIDOR = 'https://olotov.onrender.com'
-bot = telebot.TeleBot(TOKEN)
+bot = telebot.TeleBot(TOKEN, threaded=False)
 app = Flask(__name__)
 
 # Función matemática auxiliar para sumar meses correctamente
